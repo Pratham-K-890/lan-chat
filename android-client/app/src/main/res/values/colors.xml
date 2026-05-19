@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Terminal Design System — matches the HTML UI exactly -->
+    <color name="bg_deep">#0A0A0A</color>
+    <color name="bg_bar">#0E0E0E</color>
+    <color name="surface_container">#201F1F</color>
+    <color name="surface_container_low">#1C1B1B</color>
+    <color name="surface_container_high">#2A2A2A</color>
+    <color name="surface_container_highest">#353534</color>
+    <color name="surface_variant">#353534</color>
+    <color name="on_surface">#E5E2E1</color>
+    <color name="on_surface_variant">#C6C6C6</color>
+    <color name="primary_white">#FFFFFF</color>
+    <color name="on_primary">#1A1C1C</color>
+    <color name="outline">#919191</color>
+    <color name="outline_variant">#474747</color>
+    <color name="error_container">#93000A</color>
+    <color name="on_error_container">#FFDAD6</color>
+    <color name="accent_green">#00FF88</color>
+    <!-- Aliases used by existing code -->
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#0E0E0E</color>
+    <color name="colorAccent">#FFFFFF</color>
+    <color name="background">#0A0A0A</color>
+    <color name="colorSurface">#131313</color>
+    <color name="colorVoiceBackground">#0A0A0A</color>
+    <color name="colorTextPrimary">#E5E2E1</color>
+    <color name="colorTextSecondary">#C6C6C6</color>
+    <color name="colorBubbleOwn">#FFFFFF</color>
+    <color name="colorBubbleOther">#1C1B1B</color>
+    <color name="colorDivider">#474747</color>
+    <color name="statusBar">#0A0A0A</color>
+</resources>

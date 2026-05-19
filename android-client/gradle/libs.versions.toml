@@ -1,0 +1,29 @@
+[versions]
+agp              = "8.5.2"
+kotlin           = "2.0.21"
+coreKtx          = "1.13.1"
+appcompat        = "1.7.0"
+material         = "1.12.0"
+constraintlayout = "2.1.4"
+lifecycle        = "2.8.7"
+coroutines       = "1.9.0"
+jackson          = "2.17.0"
+navVersion       = "2.8.4"
+
+[libraries]
+core-ktx             = { group = "androidx.core",                  name = "core-ktx",                     version.ref = "coreKtx" }
+appcompat            = { group = "androidx.appcompat",              name = "appcompat",                    version.ref = "appcompat" }
+material             = { group = "com.google.android.material",     name = "material",                     version.ref = "material" }
+constraintlayout     = { group = "androidx.constraintlayout",       name = "constraintlayout",             version.ref = "constraintlayout" }
+lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+lifecycle-livedata-ktx  = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx",  version.ref = "lifecycle" }
+lifecycle-runtime-ktx   = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx",   version.ref = "lifecycle" }
+nav-fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navVersion" }
+nav-ui       = { group = "androidx.navigation", name = "navigation-ui-ktx",       version.ref = "navVersion" }
+coroutines-core    = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core",    version.ref = "coroutines" }
+coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+jackson-databind = { group = "com.fasterxml.jackson.core", name = "jackson-databind", version.ref = "jackson" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android      = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

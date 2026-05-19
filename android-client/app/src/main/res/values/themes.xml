@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.LanChat" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#FFFFFF</item>
+        <item name="colorPrimaryVariant">#0E0E0E</item>
+        <item name="colorOnPrimary">#0A0A0A</item>
+        <item name="colorSecondary">#C6C6C7</item>
+        <item name="colorSurface">#131313</item>
+        <item name="android:colorBackground">#0A0A0A</item>
+        <item name="android:statusBarColor">#0E0E0E</item>
+        <item name="android:navigationBarColor">#0A0A0A</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <!-- Prevent content from going under status bar -->
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="Theme.LanChat.VoiceCall" parent="Theme.LanChat">
+        <item name="android:windowFullscreen">false</item>
+    </style>
+</resources>

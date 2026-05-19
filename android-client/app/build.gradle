@@ -1,0 +1,77 @@
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+}
+
+android {
+    namespace  "com.lanchat.android"
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "com.lanchat.android"
+        minSdk        26
+        targetSdk     35
+        versionCode   1
+        versionName   "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+    }
+
+    compileOptions {
+        // VERSION_17 covers: var (10+), switch expressions (14+), records (16+)
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+        coreLibraryDesugaringEnabled true
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes += "META-INF/NOTICE.md"
+            excludes += "META-INF/LICENSE.md"
+        }
+    }
+}
+
+dependencies {
+    // Android UI
+    implementation libs.core.ktx
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.constraintlayout
+
+    // Lifecycle
+    implementation libs.lifecycle.viewmodel.ktx
+    implementation libs.lifecycle.livedata.ktx
+    implementation libs.lifecycle.runtime.ktx
+
+    // Navigation
+    implementation libs.nav.fragment
+    implementation libs.nav.ui
+
+    // Coroutines
+    implementation libs.coroutines.core
+    implementation libs.coroutines.android
+
+    // Jackson — used by the bundled common/client/server Java sources
+    implementation libs.jackson.databind
+
+    // jBCrypt — used by BcryptUtil.java
+    implementation "org.mindrot:jbcrypt:0.4"
+
+    // Java 8–17 API desugaring for minSdk 26
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:2.1.4"
+}

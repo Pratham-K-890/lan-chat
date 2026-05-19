@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_deep"
+    android:fitsSystemWindows="true">
+
+    <!-- ── Top status bar ─────────────────────────────────────── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:background="@color/bg_bar"
+        android:paddingHorizontal="12dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tvSysTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="[ SYS_TIME: 00:00 ]"
+            android:textSize="11sp"
+            android:textColor="@color/primary_white"
+            android:fontFamily="monospace" />
+
+        <TextView
+            android:id="@+id/tvTopStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[ CONNECTED ]"
+            android:textSize="11sp"
+            android:textColor="@color/accent_green"
+            android:fontFamily="monospace" />
+    </LinearLayout>
+
+    <!-- ── Online users bar ───────────────────────────────────── -->
+    <TextView
+        android:id="@+id/tvOnlineUsers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="32dp"
+        android:background="@color/surface_container_low"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="6dp"
+        android:text="No users online"
+        android:textSize="11sp"
+        android:textColor="@color/on_surface_variant"
+        android:fontFamily="monospace"
+        android:singleLine="false"
+        android:maxLines="2" />
+
+    <!-- ── Host IP banner (HOST device only, tap to copy) ──────── -->
+    <TextView
+        android:id="@+id/tvHostIpBanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="30dp"
+        android:gravity="center"
+        android:background="@color/surface_container"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="5dp"
+        android:text="[ HOST: — ]"
+        android:textSize="12sp"
+        android:textColor="@color/accent_green"
+        android:fontFamily="monospace"
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="true" />
+
+    <!-- ── Messages list — takes all remaining space ──────────── -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMessages"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingHorizontal="8dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="4dp"
+        android:clipToPadding="false"
+        android:scrollbars="vertical" />
+
+    <!-- ── File transfer progress ─────────────────────────────── -->
+    <ProgressBar
+        android:id="@+id/progressSend"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:visibility="gone"
+        android:progressTint="@color/accent_green"
+        android:max="100" />
+
+    <!-- ── Message input ──────────────────────────────────────── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@color/surface_container_low"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="6dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$ "
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/accent_green"
+            android:fontFamily="monospace" />
+
+        <EditText
+            android:id="@+id/etMessage"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="type message..."
+            android:textColorHint="@color/on_surface_variant"
+            android:textColor="@color/primary_white"
+            android:textSize="14sp"
+            android:fontFamily="monospace"
+            android:background="@null"
+            android:inputType="text"
+            android:maxLines="1"
+            android:imeOptions="actionSend" />
+
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="64dp"
+            android:layout_height="40dp"
+            android:text="SEND"
+            android:textColor="@color/on_primary"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:fontFamily="monospace"
+            android:backgroundTint="@color/primary_white"
+            android:paddingHorizontal="4dp"
+            style="@style/Widget.MaterialComponents.Button" />
+    </LinearLayout>
+
+    <!-- ── Bottom navigation ──────────────────────────────────── -->
+    <LinearLayout
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:background="@color/bg_bar">
+
+        <LinearLayout
+            android:id="@+id/navLog"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@color/surface_container">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="💬"
+                android:textSize="18sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LOG"
+                android:textSize="9sp"
+                android:textColor="@color/accent_green"
+                android:fontFamily="monospace" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navDm"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="👥"
+                android:textSize="18sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="USERS"
+                android:textSize="9sp"
+                android:textColor="@color/on_surface_variant"
+                android:fontFamily="monospace" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navGrp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📂"
+                android:textSize="18sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GROUPS"
+                android:textSize="9sp"
+                android:textColor="@color/on_surface_variant"
+                android:fontFamily="monospace" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navVox"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📞"
+                android:textSize="18sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CALL"
+                android:textSize="9sp"
+                android:textColor="@color/on_surface_variant"
+                android:fontFamily="monospace" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

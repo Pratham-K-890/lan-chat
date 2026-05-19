@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_deep"
+    android:fitsSystemWindows="true">
+
+    <!-- Top bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:background="@color/bg_bar"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp">
+
+        <TextView
+            android:id="@+id/tvSessionId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="CALL ID"
+            android:textSize="12sp"
+            android:textColor="@color/on_surface_variant"
+            android:fontFamily="monospace" />
+
+        <TextView
+            android:id="@+id/tvCallTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/accent_green"
+            android:fontFamily="monospace" />
+    </LinearLayout>
+
+    <!-- Main content — fills all space between top bar and buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingHorizontal="32dp">
+
+        <!-- Caller info -->
+        <TextView
+            android:id="@+id/tvCallStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Connecting..."
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_white"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tvPeerIp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dialing..."
+            android:textSize="14sp"
+            android:textColor="@color/on_surface_variant"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="32dp" />
+
+        <!-- Audio visualizer bars -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/tvLCh"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="[ ---- ]"
+                android:textSize="12sp"
+                android:textColor="@color/accent_green"
+                android:fontFamily="monospace"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/tvFreq"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="16kHz"
+                android:textSize="11sp"
+                android:textColor="@color/on_surface_variant"
+                android:fontFamily="monospace"
+                android:paddingHorizontal="8dp" />
+
+            <TextView
+                android:id="@+id/tvRCh"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="[ ---- ]"
+                android:textSize="12sp"
+                android:textColor="@color/accent_green"
+                android:fontFamily="monospace"
+                android:gravity="center" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Controls — always visible at bottom -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp"
+        android:background="@color/surface_container_low">
+
+        <Button
+            android:id="@+id/btnMute"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="MUTE"
+            android:textSize="12sp"
+            android:fontFamily="monospace"
+            android:backgroundTint="@color/surface_container"
+            android:textColor="@color/primary_white"
+            style="@style/Widget.MaterialComponents.Button" />
+
+        <Button
+            android:id="@+id/btnHangup"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="8dp"
+            android:text="HANG UP"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:fontFamily="monospace"
+            android:backgroundTint="#CC0000"
+            android:textColor="@color/primary_white"
+            style="@style/Widget.MaterialComponents.Button" />
+
+        <Button
+            android:id="@+id/btnSpeaker"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="SPEAKER"
+            android:textSize="12sp"
+            android:fontFamily="monospace"
+            android:backgroundTint="@color/surface_container"
+            android:textColor="@color/primary_white"
+            style="@style/Widget.MaterialComponents.Button" />
+    </LinearLayout>
+
+</LinearLayout>

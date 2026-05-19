@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    DM message item — two variants: incoming (left, dark bg) and outgoing (right, white bg).
+    Matches the terminal DM design from doc 4.
+    Use viewType in DmMessageAdapter: 0 = incoming, 1 = outgoing.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingVertical="12dp">
+
+    <!-- Header row: sender + timestamp -->
+    <LinearLayout
+        android:id="@+id/rowHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="4dp">
+
+        <TextView
+            android:id="@+id/tvSenderTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[ SENDER: USER2 ]"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_white"
+            android:fontFamily="monospace" />
+
+        <TextView
+            android:id="@+id/tvMsgTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="14:02:11"
+            android:textSize="11sp"
+            android:textColor="@color/on_surface_variant"
+            android:fontFamily="monospace" />
+    </LinearLayout>
+
+    <!-- Bubble -->
+    <LinearLayout
+        android:id="@+id/bubbleContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/surface_container_low"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp">
+
+        <TextView
+            android:id="@+id/tvMsgText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="message text"
+            android:textSize="14sp"
+            android:textColor="@color/on_surface"
+            android:fontFamily="monospace"
+            android:lineSpacingMultiplier="1.2" />
+    </LinearLayout>
+
+</LinearLayout>

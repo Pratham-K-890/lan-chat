@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Screen 4: TERMINAL_DM — Direct Message conversation — from doc 4
+    IDs: rvDmMessages, etDmInput, btnDmSend, btnSendFile, btnEncrypt,
+         btnDisconnect, tvDmPeer, tvSecureLink.
+    Wired to DmActivity.kt (create this activity separately when needed).
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_deep">
+
+    <!-- Fixed top bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:background="@color/bg_bar"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:elevation="4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⬛"
+            android:textSize="14sp"
+            android:textColor="@color/primary_white" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="[ DIRECTORY: ROOT/CHATS ]"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_white"
+            android:fontFamily="monospace"
+            android:letterSpacing="0.05" />
+
+        <TextView
+            android:id="@+id/tvSecureLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[ SECURE_LINK: ESTABLISHED ]"
+            android:textSize="10sp"
+            android:textColor="@color/on_surface_variant"
+            android:fontFamily="monospace" />
+    </LinearLayout>
+
+    <!-- Scrollable conversation area -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="48dp"
+        android:paddingBottom="180dp">
+
+        <!-- Terminal log buffer (decorative header) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="8dp"
+            android:alpha="0.4">
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="0x0001 INITIALIZING HANDSHAKE..."
+                android:textSize="11sp" android:textColor="@color/on_surface_variant"
+                android:fontFamily="monospace" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="0x0002 PEER CONNECTED: 192.168.1.42"
+                android:textSize="11sp" android:textColor="@color/on_surface_variant"
+                android:fontFamily="monospace" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="0x0003 ENCRYPTION: AES-256-GCM ACTIVE"
+                android:textSize="11sp" android:textColor="@color/on_surface_variant"
+                android:fontFamily="monospace" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="0x0004 BUFFER_STREAM_START"
+                android:textSize="11sp" android:textColor="@color/on_surface_variant"
+                android:fontFamily="monospace" />
+        </LinearLayout>
+
+        <!-- DM messages RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvDmMessages"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:clipToPadding="false"
+            android:overScrollMode="never" />
+
+    </LinearLayout>
+
+    <!-- ── Command input + actions — fixed above bottom nav ─────── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="64dp"
+        android:background="@color/bg_deep"
+        android:paddingHorizontal="16dp"
+        android:paddingBottom="12dp">
+
+        <!-- Prompt row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="user@chat:~/dm/peer$ "
+                android:textSize="13sp"
+                android:textColor="@color/on_surface_variant"
+                android:alpha="0.7"
+                android:fontFamily="monospace" />
+
+            <EditText
+                android:id="@+id/etDmInput"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="@color/primary_white"
+                android:textSize="14sp"
+                android:fontFamily="monospace"
+                android:background="@null"
+                android:inputType="textMultiLine"
+                android:maxLines="3"
+                android:imeOptions="actionSend" />
+
+            <Button
+                android:id="@+id/btnDmSend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SEND"
+                android:textColor="@color/on_primary"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:fontFamily="monospace"
+                android:backgroundTint="@color/primary_white"
+                android:paddingHorizontal="12dp"
+                style="@style/Widget.MaterialComponents.Button" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/outline_variant"
+            android:alpha="0.2" />
+
+        <!-- Action row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <Button
+                android:id="@+id/btnSendFile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="&gt; SEND_FILE"
+                android:textColor="@color/primary_white"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:fontFamily="monospace"
+                android:paddingHorizontal="0dp"
+                android:layout_marginEnd="16dp"
+                style="@style/Widget.MaterialComponents.Button.TextButton" />
+
+            <Button
+                android:id="@+id/btnEncrypt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="&gt; ENCRYPT"
+                android:textColor="@color/primary_white"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:fontFamily="monospace"
+                android:paddingHorizontal="0dp"
+                style="@style/Widget.MaterialComponents.Button.TextButton" />
+
+            <View android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/btnDisconnect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="&gt; DISCONNECT"
+                android:textColor="@color/error_container"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:fontFamily="monospace"
+                android:paddingHorizontal="0dp"
+                style="@style/Widget.MaterialComponents.Button.TextButton" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ── Bottom nav — DM tab active ───────────────────────────── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        android:background="@color/bg_deep"
+        android:layout_gravity="bottom"
+        android:gravity="center_vertical">
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="⬛" android:textSize="18sp" android:textColor="@color/on_surface" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="[ LOG ]" android:textSize="10sp" android:textColor="@color/on_surface"
+                android:fontFamily="monospace" />
+        </LinearLayout>
+
+        <!-- DM — active -->
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center"
+            android:background="@color/primary_white">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="👤" android:textSize="18sp" android:textColor="@color/on_primary" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="[ DM ]" android:textSize="10sp" android:textColor="@color/on_primary"
+                android:fontFamily="monospace" android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="👥" android:textSize="18sp" android:textColor="@color/on_surface" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="[ GRP ]" android:textSize="10sp" android:textColor="@color/on_surface"
+                android:fontFamily="monospace" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="🎙" android:textSize="18sp" android:textColor="@color/on_surface" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="[ VOX ]" android:textSize="10sp" android:textColor="@color/on_surface"
+                android:fontFamily="monospace" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

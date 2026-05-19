@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Screen 1: TERMINAL_GROUPS — Network nodes / group directory — from doc 1
+    IDs: rvGroups, etGroupCommand, tvUserAccess, tvMountingFs.
+    Wired to GroupsActivity.kt.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_deep"
+    android:fitsSystemWindows="true">
+
+    <!-- Fixed top bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:background="@color/bg_bar"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:elevation="4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⬛"
+            android:textSize="14sp"
+            android:textColor="@color/primary_white" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="[ DIRECTORY: ROOT/CHATS ]"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_white"
+            android:fontFamily="monospace"
+            android:letterSpacing="0.05" />
+
+        <TextView
+            android:id="@+id/tvSysTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[ 12:43:01 ]"
+            android:textSize="10sp"
+            android:textColor="@color/on_surface_variant"
+            android:fontFamily="monospace"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Signal: High"
+            android:textSize="10sp"
+            android:textColor="@color/on_surface_variant"
+            android:fontFamily="monospace" />
+    </LinearLayout>
+
+    <!-- Scrollable body -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="48dp"
+        android:paddingBottom="140dp"
+        android:overScrollMode="never"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp">
+
+            <!-- System status header -->
+            <TextView
+                android:id="@+id/tvUserAccess"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="USER_ACCESS_LEVEL: 0x00FF"
+                android:textSize="11sp"
+                android:textColor="@color/on_surface_variant"
+                android:fontFamily="monospace" />
+
+            <TextView
+                android:id="@+id/tvMountingFs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="MOUNTING_FS: ENCRYPTED_V2"
+                android:textSize="11sp"
+                android:textColor="@color/on_surface_variant"
+                android:fontFamily="monospace" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Network nodes"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary_white"
+                android:fontFamily="monospace"
+                android:letterSpacing="-0.02" />
+
+            <!-- Accent bar -->
+            <View
+                android:layout_width="48dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@color/primary_white" />
+
+            <!-- Column headers -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp">
+
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="4" android:text="Permissions"
+                    android:textSize="10sp" android:textColor="@color/on_surface_variant"
+                    android:fontFamily="monospace" android:textAllCaps="true" />
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="2" android:text="User"
+                    android:textSize="10sp" android:textColor="@color/on_surface_variant"
+                    android:fontFamily="monospace" android:textAllCaps="true" />
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="2" android:text="Size"
+                    android:textSize="10sp" android:textColor="@color/on_surface_variant"
+                    android:fontFamily="monospace" android:textAllCaps="true" />
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="4" android:text="Identifier"
+                    android:textSize="10sp" android:textColor="@color/on_surface_variant"
+                    android:fontFamily="monospace" android:textAllCaps="true"
+                    android:gravity="end" />
+            </LinearLayout>
+
+            <!-- Groups list -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvGroups"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false" />
+
+            <!-- Create group button -->
+            <Button
+                android:id="@+id/btnCreateGroup"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="24dp"
+                android:text="[ CREATE_NEW_NODE ]"
+                android:textColor="@color/on_primary"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:fontFamily="monospace"
+                android:letterSpacing="0.08"
+                android:backgroundTint="@color/primary_white"
+                style="@style/Widget.MaterialComponents.Button" />
+
+            <!-- Terminal log section (decorative) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="32dp"
+                android:alpha="0.5">
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="0x001 [ INFO ] INITIALIZING HANDSHAKE..."
+                    android:textSize="11sp" android:textColor="@color/on_surface_variant"
+                    android:fontFamily="monospace" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="0x002 [ INFO ] PACKET SNIFFING DETECTED: NULL"
+                    android:textSize="11sp" android:textColor="@color/on_surface_variant"
+                    android:fontFamily="monospace" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="0x003 [ WARN ] LATENCY SPIKE IN SECTOR 7G"
+                    android:textSize="11sp" android:textColor="@color/on_surface_variant"
+                    android:fontFamily="monospace" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="0x004 [ INFO ] ACCESSING ENCRYPTED DIRECTORY..."
+                    android:textSize="11sp" android:textColor="@color/on_surface_variant"
+                    android:fontFamily="monospace" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Terminal input bar (above bottom nav) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="64dp"
+        android:background="@color/bg_deep"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@color/surface_container_low"
+            android:paddingHorizontal="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="&gt;"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary_white"
+                android:fontFamily="monospace"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="SELECT_CHANNEL --TARGET="
+                android:textSize="13sp"
+                android:textColor="@color/on_surface"
+                android:fontFamily="monospace" />
+
+            <EditText
+                android:id="@+id/etGroupCommand"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:textColor="@color/primary_white"
+                android:textSize="13sp"
+                android:fontFamily="monospace"
+                android:background="@null"
+                android:singleLine="true"
+                android:imeOptions="actionDone" />
+
+            <!-- Blinking cursor (static representation) -->
+            <View
+                android:layout_width="8dp"
+                android:layout_height="20dp"
+                android:background="@color/primary_white" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ── Bottom nav — GRP tab active ──────────────────────────── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        android:background="@color/bg_deep"
+        android:layout_gravity="bottom"
+        android:gravity="center_vertical">
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="⬛" android:textSize="18sp" android:textColor="@color/on_surface" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="[ LOG ]" android:textSize="10sp" android:textColor="@color/on_surface"
+                android:fontFamily="monospace" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="👤" android:textSize="18sp" android:textColor="@color/on_surface" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="[ DM ]" android:textSize="10sp" android:textColor="@color/on_surface"
+                android:fontFamily="monospace" />
+        </LinearLayout>
+
+        <!-- GRP — active -->
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center"
+            android:background="@color/primary_white">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="👥" android:textSize="18sp" android:textColor="@color/on_primary" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="[ GRP ]" android:textSize="10sp" android:textColor="@color/on_primary"
+                android:fontFamily="monospace" android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="🎙" android:textSize="18sp" android:textColor="@color/on_surface" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="[ VOX ]" android:textSize="10sp" android:textColor="@color/on_surface"
+                android:fontFamily="monospace" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

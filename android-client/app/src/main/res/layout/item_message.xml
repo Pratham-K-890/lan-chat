@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Broadcast / LOG message row — terminal style matching doc 3.
+    Used by MessageAdapter.kt in rvMessages.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingVertical="4dp">
+
+    <!-- Timestamp + sender row -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tvTimestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[14:18:22]"
+            android:textSize="11sp"
+            android:textColor="@color/on_surface_variant"
+            android:fontFamily="monospace" />
+
+        <TextView
+            android:id="@+id/tvSender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="&gt; user_alpha:"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_white"
+            android:fontFamily="monospace" />
+    </LinearLayout>
+
+    <!-- Message text -->
+    <TextView
+        android:id="@+id/tvMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text="message text here"
+        android:textSize="14sp"
+        android:textColor="@color/on_surface"
+        android:fontFamily="monospace"
+        android:lineSpacingMultiplier="1.2" />
+
+</LinearLayout>
